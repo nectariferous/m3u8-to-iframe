@@ -16,18 +16,18 @@ function convertToIframe(hlsLink, player) {
     return null;
   }
 
-  var baseUrl = "file:///D:/app/code%20theme%20templet/Best%20code/All%20live%20post%20page%20code/no%20en/mpd%20jw%20player/new%20project/project/index.html"; // Replace 'yourusername' with your GitHub username
+  var baseUrl = "https://noobromon.github.io/m3u8-to-iframe/"; // Replace 'yourusername' with your GitHub username
   var playerUrl;
 
   switch (player) {
     case "cleper":
-      playerUrl = baseUrl + "/cleper-player";
+      playerUrl = baseUrl + "/player1";
       break;
     case "jw":
-      playerUrl = baseUrl + "/jw-player";
+      playerUrl = baseUrl + "/player2";
       break;
     case "videojs":
-      playerUrl = baseUrl + "/video-js-player";
+      playerUrl = baseUrl + "/player3";
       break;
     default:
       return null;
