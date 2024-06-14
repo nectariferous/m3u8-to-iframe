@@ -1,0 +1,224 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Converter Styles */
+.converter-container {
+    margin-bottom: 20px;
+}
+
+.converter-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.converter-container input[type="text"],
+.converter-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.converter-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#previewContainer {
+    margin-top: 20px;
+}
+
+/* Player Video Styles */
+.payervideo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.payervideo h1 {
+    margin-top: 0;
+}
+
+.payervideo .button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+.form-container input[type="text"],
+.form-container button {
+    padding: 10px;
+    margin: 5px;
+}
+
+.form-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.texthere {
+    margin-top: 40px;
+}
+
+.texthere h2 {
+    margin-top: 0;
+}
+
+.texthere ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.texthere ul li {
+    margin-bottom: 10px;
+}
+
+.texthere form label {
+    display: block;
+    margin-bottom: 10px;
+}
+ .divtagbody{
+            margin: 0;
+            font-family: Roboto, sans-serif;
+            background: #ffffff;
+            color: #333333;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .intro {
+            background: rgb(255, 255, 255);
+            color: #333333;
+            font-family: Roboto, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            margin: 0px 0px 15px;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .intro h1 {
+            font-size: 18pt;
+            margin: 0px;
+            padding: 0px 0px 15px;
+        }
+
+        main {
+            background: rgb(255, 255, 255);
+            font-family: Roboto, sans-serif;
+            font-size: 15px;
+            margin: 0px auto;
+            max-width: 720px;
+            padding: 24px;
+        }
+
+        article {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        article p {
+            color: #333333;
+            line-height: 1.5;
+            margin: 0px;
+            padding: 14px;
+        }
+
+        
+
+        .credit {
+            background: rgb(255, 255, 255);
+            color: #333333;
+            font-family: Roboto, sans-serif;
+            font-size: 9pt;
+            margin: 40px 0px 0px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .credit a {
+            color: #333333;
+            margin: 0px;
+            padding: 0px;
+            text-decoration-line: none;
+        }
+.simple-tags {
+    border-radius: 5px;
+    border: 1px solid rgb(30, 135, 240);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    margin: 1em auto; /* Center the container horizontally */
+    padding: 0.5em;
+    max-width: 100%; /* Ensure the container doesn't exceed the width of its parent */
+}
+
+.simple-tags .tag {
+    background-color: #1e87f0;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0.5em 0.2em;
+    padding: 0.5em;
+}
