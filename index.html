@@ -3,67 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HLS Preview Generator</title>
+  <title>m3u8 to iframe Converter</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <label for="hlsLink">Enter HLS Link:</label>
-  <input type="text" id="hlsLink" placeholder="Enter HLS link here">
+  <header>
+    <h1>m3u8 to iframe Converter</h1>
+  </header>
   
-  <label for="playerSelect">Select Player:</label>
-  <select id="playerSelect">
-    <option value="cleper">Cleper Player</option>
-    <option value="jw">JW Player</option>
-    <option value="videojs">Video.js Player</option>
-  </select>
-  
-  <button onclick="generatePreview()">Generate Preview</button>
-  
-  <div id="previewContainer"></div>
+  <main>
+    <div class="converter-container">
+      <label for="hlsLink">Enter HLS Link:</label>
+      <input type="text" id="hlsLink" name="hlsLink" placeholder="Your hls URL here .m3u8 .mpd .mp4 .mkv .webm">
+      <select id="playerSelect">
+        <option value="cleper">Cleper Player</option>
+        <option value="jw">JW Player</option>
+        <option value="videojs">Video.js Player</option>
+      </select>
+      <button onclick="generatePreview()">Generate Preview</button>
+    </div>
+    
+    <div id="previewContainer"></div>
+    <button id="copyEmbedBtn" style="display: none;" onclick="copyEmbedLink()">Copy Embed Link</button>
+    <input type="text" id="embedLink" style="display: none;">
+  </main>
 
-  <script>
-    function generatePreview() {
-      var hlsLink = document.getElementById('hlsLink').value;
-      var player = document.getElementById('playerSelect').value;
-      var previewContainer = document.getElementById('previewContainer');
-      var iframeUrl = convertToIframe(hlsLink, player);
+  <!-- Mobile Menu Section -->
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body">
+      <!-- Content for mobile menu goes here -->
+    </div>
+  </div>
+ <center><h1>Free Online HLS M3U8 Livestream Player</h1></center>
+    <div class="popup" id="popup">
+      <!-- Popup content -->
+    </div>
+  </div>
+  
+  <!-- Text Section -->
+  <div class="texthere">
+    <!-- Content for the text section goes
+You
+and aded simple hls button aded and to simple hls button to  load https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8
+ChatGPT
+ChatGPT
+Sure, here's the updated code with the addition of a "Simple HLS" button that loads the provided HLS link:
 
-      if (iframeUrl) {
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>m3u8 to iframe Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>m3u8 to iframe Converter</h1>
+  </header>
+  
+  <main>
+    <div class="converter-container">
+      <label for="hlsLink">Enter HLS Link:</label>
+      <input type="text" id="hlsLink" name="hlsLink" placeholder="Your hls URL here .m3u8 .mpd .mp4 .mkv .webm">
+      <select id="playerSelect">
+        <option value="cleper">Cleper Player</option>
+        <option value="jw">JW Player</option>
+        <option value="videojs">Video.js Player</option>
+      </select>
+      <button onclick="generatePreview()">Generate Preview</button>
+      <button onclick="loadSimpleHLS()">Simple HLS</button>
+    </div>
+    
+    <div id="previewContainer"></div>
+    <button id="copyEmbedBtn" style="display: none;" onclick="copyEmbedLink()">Copy Embed Link</button>
+    <input type="text" id="embedLink" style="display: none;">
+  </main>
+
+  <!-- Mobile Menu Section -->
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body">
+      <!-- Content for mobile menu goes here -->
+    </div>
+  </div>
+ <center><h1>Free Online HLS M3U8 Livestream Player</h1></center>
+    <div class="popup" id="popup">
+      <!-- Popup content -->
+    </div>
+  </div>
+  
+  <!-- Text Section -->
+  <div class="texthere">
+    <!-- Content for the text section goes here -->
+  </div>
+
+
+<div class="divtagbody" >
+  
+    <main>
+        <article>
+            <center><h2>TAGS:</h2></center>
+            <div class="simple-tags" id="container" data-simple-tags="CodeHim, HTML, CSS, JavaScript, jQuery,hls video player,hls,hls video player html5,hls player,hls js player,video player,m3u8 video player,hls html5 player,video player with hls,m3u8 player,html5 video player,player,hls playback,hls streaming server,hls video player with quality switching option,ott player,vlc player,hls streaming,hls js tutorial,play hls streaming,exoplayer change hls quality,hls key,hls video streaming,hls plyr.io,clappr player wordpress,clappr player blogger,m3u8,m3u player,m3u8 player,m3u playlist player,perfect player,m3u8 player (m3u player),m3u player for roku tv,m3u8 player,url,free m3u8,m3u8 player cast,m3u8 player no ads,best m3u player lg smart tv,m3u8 player offline,m3u8 link player,m3u8 file player,m3u8 - hls player,m3u playlist perfect player,m3u8 playlist player,m3u8 video player,free,m3u8 streaming player,m3u8 player and converter,m3u8 - hls + dash player,free m3u,m3u player mac,iptv,free iptv,iptv player,top iptv service,best iptv service,free iptv 2024,free iptv apps,best iptv,iptv service,free iptv players,what is iptv,free iptv app,free iptv 2023,best iptv services for firestick,free iptv app firestick,iptv service reviews,is iptv illegal,free iptv player,iptv player apps,iptv smarters pro,the best iptv service,free live tv players,free live iptv,free iptv services,free iptv player firestick,new free iptv 2023,video player,hls,hls video player,hls video player html5,hls player,m3u8 player,player movie,how to install,hls js player,m3u8 video player,jwplayer,proxy player script,hls html5 player,hls js tutorial,custom video player,video player with hls,html5 video player free download,wordpress video player plugin free,html5 video player,how to play hls video in html5,hls tutorial,free,react player,how to find hls master file,m3u8 player,m3u8,m3u8 video player,m3u8 to mp4,m3u8 link player,how to play m3u8,how to play m3u8 file,how to play m3u8 video,how to play m3u8 in wordpress,how to play m3u8 on wordpress,how to play m3u8 file in browser,convert m3u8 to mp4,how to play m3u8 file in vlc,how to play m3u8 in website,video player,how to play m3u8 file in chrome,convert m3u8 to mp4 mac,how to play m3u8 file in vlc android,m3u8 player (m3u player),m3u player,m3u8,m3u8 player,video player,m3u8 video player,how to play m3u8,how to play m3u8 file,convert m3u8 to mp4,hls video player,html5 video player,free,m3u8 to embed,iframe,how to play m3u8 link,how to play m3u8 video,how to play m3u8 in wordpress,how to play m3u8 on wordpress,how to play m3u8 file in chrome,how to play m3u8 file in browser,how to play m3u8 file in vlc,how to play m3u8 in website,html5 video player free download,convert m3u8 to mp4,video player,m3u8 video player,m3u8,m3u8 player,html5 video player,how to play m3u8,convert m3u8 to mp4 mac,convert iso to m3u8,how to convert m3u8 to mp4,how to play m3u8 file,hls video player,custom video player,how to play m3u8 on wordpress,convert embed code to url,how to play m3u8 file in vlc,how to play m3u8 file in vlc android,create custom video player,how to play m3u8 link,m3u8 to embed,how to play m3u8 in wordpress">
+                <!-- JavaScript will dynamically generate tags here -->
+            </div>
+        </article>
+    </main>
+    <script>
+// Get the container element
+var container = document.getElementById('container');
+
+// Get the data-simple-tags attribute value
+var tagsString = container.getAttribute('data-simple-tags');
+
+// Split the string into an array of tags
+var tagsArray = tagsString.split(',').map(tag => tag.trim());
+
+// Get the div for tags
+var tagContainer = container;
+
+// Loop through the tags array and create div elements for each tag
+tagsArray.forEach(tag => {
+    // Create div element for tag
+    var tagDiv = document.createElement('div');
+    tagDiv.classList.add('tag');
+    tagDiv.textContent = tag;
+
+    // Append tag div to tag container
+    tagContainer.appendChild(tagDiv);
+});
+
+function generatePreview() {
+    var hlsLink = document.getElementById('hlsLink').value;
+    var player = document.getElementById('playerSelect').value;
+    var previewContainer = document.getElementById('previewContainer');
+    var copyEmbedBtn = document.getElementById('copyEmbedBtn');
+    var embedLinkInput = document.getElementById('embedLink');
+    var iframeUrl = convertToIframe(hlsLink, player);
+
+    if (iframeUrl) {
         previewContainer.innerHTML = `<iframe src="${iframeUrl}" width="100%" height="100vh" frameborder="0" allowfullscreen></iframe>`;
-      } else {
+        copyEmbedBtn.style.display = 'block';
+        embedLinkInput.value = iframeUrl;
+        embedLinkInput.style.display = 'block';
+    } else {
         previewContainer.innerHTML = "Error: Invalid HLS Link or Player";
-      }
+        copyEmbedBtn.style.display = 'none';
+        embedLinkInput.style.display = 'none';
     }
+}
 
-    function convertToIframe(hlsLink, player) {
-      if (!isValidHlsLink(hlsLink)) {
+function copyEmbedLink() {
+    var embedLinkInput = document.getElementById('embedLink');
+    embedLinkInput.select();
+    document.execCommand('copy');
+    alert('Embed link copied to clipboard!');
+}
+
+function loadSimpleHLS() {
+    document.getElementById('hlsLink').value = "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8";
+}
+
+function convertToIframe(hlsLink, player) {
+    if (!isValidHlsLink(hlsLink)) {
         return null;
-      }
+    }
 
-      var baseUrl = "https://noobromon.github.io/m3u8-to-iframe/"; // Replace 'yourusername' with your GitHub username
-      var playerUrl;
+    var baseUrl = "https://noobromon.github.io/m3u8-to-iframe/"; // Replace 'yourusername' with your GitHub username
+    var playerUrl;
 
-      switch (player) {
+    switch (player) {
         case "cleper":
-          playerUrl = baseUrl + "player1";
-          break;
+            playerUrl = baseUrl + "player1";
+            break;
         case "jw":
-          playerUrl = baseUrl + "player2";
-          break;
+            playerUrl = baseUrl + "player2";
+            break;
         case "videojs":
-          playerUrl = baseUrl + "player3";
-          break;
+            playerUrl = baseUrl + "player3";
+            break;
         default:
-          return null;
-      }
-
-      return `${playerUrl}/?url=${encodeURIComponent(hlsLink)}`;
+            return null;
     }
 
-    function isValidHlsLink(link) {
-      // You can add your validation logic here
-      // For simplicity, let's assume any non-empty string is valid
-      return link.trim() !== "";
-    }
-  </script>
-</body>
-</html>
+    return `${playerUrl}/?url=${encodeURIComponent(hlsLink)}`;
+}
+
+function isValidHlsLink(link) {
+    // You can add your validation logic here
+    // For simplicity, let's assume any non-empty string is valid
+    return link.trim() !== "";
+}
+</script>
