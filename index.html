@@ -20,6 +20,17 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    .logo {
+      display: block;
+      margin: 20px auto;
+      max-width: 200px;
+    }
+
+    .player-features {
+      margin: 20px auto;
+      max-width: 600px;
+    }
   </style>
 </head>
 <body>
@@ -28,6 +39,8 @@
   </header>
   
   <main>
+    <img src="logo.png" alt="Logo" class="logo">
+    
     <div class="converter-container">
       <label for="hlsLink">Enter HLS Link:</label>
       <input type="text" id="hlsLink" name="hlsLink" placeholder="Your hls URL here .m3u8 .mpd .mp4 .mkv .webm">
@@ -45,6 +58,16 @@
       <input type="text" id="embedLink" style="display: none;">
       <button id="copyEmbedBtn" style="display: none;" onclick="copyEmbedLink()">Copy Embed Link</button>
     </div>
+
+    <section class="player-features">
+      <h2>Player Features</h2>
+      <ul>
+        <li>Feature 1</li>
+        <li>Feature 2</li>
+        <li>Feature 3</li>
+        <!-- Add more features as needed -->
+      </ul>
+    </section>
   </main>
 
   <!-- Mobile Menu Section -->
@@ -111,23 +134,21 @@
             var player = document.getElementById('playerSelect').value;
             var previewContainer = document.getElementById('previewContainer');
             var copyEmbedBtn = document.getElementById('copyEmbedBtn');
-            var embedLinkInput = document.getElementById('embedLink');
             var iframeUrl = convertToIframe(hlsLink, player);
 
             if (iframeUrl) {
                 previewContainer.innerHTML = `<iframe src="${iframeUrl}" width="100%" height="100vh" frameborder="0" allowfullscreen></iframe>`;
-                copyEmbedBtn.style.display = 'block';
-                embedLinkInput.value = iframeUrl;
-                embedLinkInput.style.display = 'block';
+                copyEmbedBtn.style.display = 'inline-block';
+                document.getElementById('embedLink').value = iframeUrl;
             } else {
                 previewContainer.innerHTML = "Error: Invalid HLS Link or Player";
                 copyEmbedBtn.style.display = 'none';
-                embedLinkInput.style.display = 'none';
             }
         }
 
         function copyEmbedLink() {
             var embedLinkInput = document.getElementById('embedLink');
+            embedLinkInput.style.display = 'inline';
             embedLinkInput.select();
             document.execCommand('copy');
             alert('Embed link copied to clipboard!');
@@ -174,7 +195,7 @@
 </div>
 <footer>
     <p>&copy; 2024 m3u8 to iframe Converter. All rights reserved.</p>
-</footer>
+  </footer>
 
 </body>
 </html>
