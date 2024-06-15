@@ -35,53 +35,7 @@
       <button id="copyEmbedBtn" style="display: none;" onclick="copyEmbedLink()">Copy Embed Link</button>
     </div>
 
-    <section class="player-features">
-      <h2>Player Features</h2>
-      <ul>
-        <li>Free to use</li>
-        <li>Supports multiple platforms: Android, Mac OS X, tvOS, Windows, Android TV</li>
-        <!-- Add more features as needed -->
-      </ul>
-    </section>
-  </main>
-<div class="how-to-use">
-  <h2>How to Use</h2>
-  <p>Start by entering an HLS stream link into the input field labeled "Enter HLS Link". This can be a direct link to an .m3u8 playlist or other supported formats.</p>
-  
-  <h3>Select Player</h3>
-  <p>Choose a player from the dropdown list (Cleper Player, JW Player, Video.js Player). This selection determines how the HLS stream will be embedded.</p>
-  
-  <h3>Generate Preview</h3>
-  <p>Click the "Generate Preview" button to create an iframe preview below. This iframe embeds the HLS stream using the selected player.</p>
-  
-  <h3>Copy Embed Link</h3>
-  <p>Once the preview is generated, click the "Copy Embed Link" button to copy the embed code (iframe URL) to your clipboard. This link can then be used to embed the HLS stream into any HTML page or platform that supports iframes.</p>
-</div>
-
-<div class="supported-platforms">
-  <h2>Supported Platforms</h2>
-  <p>This tool supports the following platforms for embedding:</p>
-  <ul>
-    <li>Android</li>
-    <li>Mac OS X</li>
-    <li>tvOS</li>
-    <li>Windows</li>
-    <li>Android TV</li>
-  </ul>
-</div>
-
-<div class="embed-methods">
-  <h2>Embedding Methods</h2>
-  <p>If your website is secured with an SSL certificate, use the HTTPS protocol for the embeddable URL. Ensure your streaming URL also supports the HTTPS format:</p>
-  <p><strong>Example:</strong> https://anym3u8player.com/tv/p.php?url=https://example.com/playlist.m3u8</p>
-  
-  <h4>Example of Embed Iframe:</h4>
-  <pre><code>&lt;iframe frameborder="0" allowfullscreen="" scrolling="no" allow="autoplay;fullscreen" src="https://anym3u8player.com/tv/p.php?url=<span id="httpsEmbedUrl"></span>" style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px;"&gt;&lt;/iframe&gt;</code></pre>
-
-  <h3>HTTP Method (For Non-Secured Websites)</h3>
-  <p>If your website does not have an SSL certificate, use the HTTP protocol for embedding:</p>
-  <p><strong>Example:</strong> http://anym3u8player.com/tv/p.php?url=http://example.com/playlist.m3u8</p>
-</div>
+    
 
    <script>
     function generatePreview() {
@@ -180,7 +134,53 @@
     </script>
   <!-- Text Section -->
   <div class="texthere">
-    <!-- Content for the text section goes here -->
+    <!-- Content for the text section goes here --><section class="player-features">
+      <h2>Player Features</h2>
+      <ul>
+        <li>Free to use</li>
+        <li>Supports multiple platforms: Android, Mac OS X, tvOS, Windows, Android TV</li>
+        <!-- Add more features as needed -->
+      </ul>
+    </section>
+  </main>
+<div class="how-to-use">
+  <h2>How to Use</h2>
+  <p>Start by entering an HLS stream link into the input field labeled "Enter HLS Link". This can be a direct link to an .m3u8 playlist or other supported formats.</p>
+  
+  <h3>Select Player</h3>
+  <p>Choose a player from the dropdown list (Cleper Player, JW Player, Video.js Player). This selection determines how the HLS stream will be embedded.</p>
+  
+  <h3>Generate Preview</h3>
+  <p>Click the "Generate Preview" button to create an iframe preview below. This iframe embeds the HLS stream using the selected player.</p>
+  
+  <h3>Copy Embed Link</h3>
+  <p>Once the preview is generated, click the "Copy Embed Link" button to copy the embed code (iframe URL) to your clipboard. This link can then be used to embed the HLS stream into any HTML page or platform that supports iframes.</p>
+</div>
+
+<div class="supported-platforms">
+  <h2>Supported Platforms</h2>
+  <p>This tool supports the following platforms for embedding:</p>
+  <ul>
+    <li>Android</li>
+    <li>Mac OS X</li>
+    <li>tvOS</li>
+    <li>Windows</li>
+    <li>Android TV</li>
+  </ul>
+</div>
+
+<div class="embed-methods">
+  <h2>Embedding Methods</h2>
+  <p>If your website is secured with an SSL certificate, use the HTTPS protocol for the embeddable URL. Ensure your streaming URL also supports the HTTPS format:</p>
+  <p><strong>Example:</strong> https://anym3u8player.com/tv/p.php?url=https://example.com/playlist.m3u8</p>
+  
+  <h4>Example of Embed Iframe:</h4>
+  <pre><code>&lt;iframe frameborder="0" allowfullscreen="" scrolling="no" allow="autoplay;fullscreen" src="https://anym3u8player.com/tv/p.php?url=<span id="httpsEmbedUrl"></span>" style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px;"&gt;&lt;/iframe&gt;</code></pre>
+
+  <h3>HTTP Method (For Non-Secured Websites)</h3>
+  <p>If your website does not have an SSL certificate, use the HTTP protocol for embedding:</p>
+  <p><strong>Example:</strong> http://anym3u8player.com/tv/p.php?url=http://example.com/playlist.m3u8</p>
+</div>
   </div>
 
 
