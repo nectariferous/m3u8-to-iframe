@@ -230,3 +230,63 @@ footer p {
         max-width: 80%; /* Adjust maximum width */
         max-height: 100%; /* Adjust maximum height */
     }
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  display: block;
+  margin: 20px auto;
+  max-width: 200px;
+}
+
+.converter-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.embed-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#copyEmbedBtn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.player-features {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+footer {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
