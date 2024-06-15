@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowplayer Example</title>
+    <style>
+        /* CSS styles for player container */
+        #player-container {
+            max-width: 600px;
+            margin: 0 auto; /* Center the player */
+        }
+    </style>
+</head>
+<body>
+    <div id="player-container">
+        <div data-player-id="5ec216e2-6409-4c51-b8ee-7ad7bf6b2b96"></div>
+    </div>
+
+    <!-- Include Flowplayer async script -->
+    <script src="//cdn.flowplayer.com/players/ae9395b8-b51d-494c-9cf8-7f7190e18d49/native/flowplayer.async.js"></script>
+
+    <!-- JavaScript to initialize Flowplayer and additional functionalities -->
+    <script>
+        // Function to extract URL parameter
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        // Main domain check
+        const mainDomain = 'https://noobromon.github.io/';
+
+        // Function to check if URL is allowed
+        function isURLAllowed(url) {
+            return url.startsWith(mainDomain);
+        }
+
+        // Check current URL and redirect if not allowed
+        if (!isURLAllowed(window.location.href)) {
+            // Redirect to the main domain after 10 seconds
+            setTimeout(function () {
+                window.location.href = mainDomain + 'm3u8-to-iframe-Converter/';
+            }, 10000); // 10 seconds delay
+        }
+
+        // Disable developer tools script
+        (function () {
+            var script = document.createElement('script');
+            script.setAttribute('disable-devtool-auto', 'true');
+            script.setAttribute('src', 'https://cdn.jsdelivr.net/npm/disable-devtool');
+            script.setAttribute('clear-log', 'true');
+            document.body.appendChild(script);
+        })();
+
+        // Wait for the document to be fully loaded before initializing Flowplayer
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get video URL from query parameter
+            var videoUrl = getQueryParam('url');
+
+            // Configuration object for Flowplayer
+            var config = {
+                src: videoUrl, // Use the extracted video URL
+                hlsjs: {
+                    xhrSetup: function (xhr, url) {
+                        // Customize XHR requests if needed
+                    }
+                }
+            };
+
+            // Initialize Flowplayer
+            flowplayer("#player-container > div", config);
+        });
+    </script>
+</body>
+</html>
