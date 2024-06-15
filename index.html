@@ -47,3 +47,75 @@
   <footer>
     <p>&copy; 2024 m3u8 to iframe Converter. All rights reserved.</p>
   </footer>
+   <script>
+    function generatePreview() {
+      var hlsLink = document.getElementById('hlsLink').value.trim();
+      var player = document.getElementById('playerSelect').value;
+      var previewContainer = document.getElementById('previewContainer');
+      var copyEmbedBtn = document.getElementById('copyEmbedBtn');
+      var iframeUrl = convertToIframe(hlsLink, player);
+
+      // Clear previous preview
+      previewContainer.innerHTML = '';
+
+      if (iframeUrl) {
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('src', iframeUrl);
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('height', '480px');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', '');
+
+        previewContainer.appendChild(iframe);
+        copyEmbedBtn.style.display = 'inline-block';
+        document.getElementById('embedLink').value = iframeUrl;
+      } else {
+        previewContainer.innerHTML = "<p>Add video URL to start playing</p>";
+        copyEmbedBtn.style.display = 'none';
+      }
+    }
+
+    function copyEmbedLink() {
+      var embedLinkInput = document.getElementById('embedLink');
+      embedLinkInput.style.display = 'inline';
+      embedLinkInput.select();
+      document.execCommand('copy');
+      alert('Embed link copied to clipboard!');
+    }
+
+    function loadSimpleHLS() {
+      document.getElementById('hlsLink').value = "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8";
+    }
+
+    function convertToIframe(hlsLink, player) {
+      if (!isValidHlsLink(hlsLink)) {
+        return null;
+      }
+
+      var baseUrl = "https://yourbaseurl.com/"; // Replace with your actual base URL
+      var playerUrl;
+
+      switch (player) {
+        case "cleper":
+          playerUrl = baseUrl + "player1";
+          break;
+        case "jw":
+          playerUrl = baseUrl + "player2";
+          break;
+        case "videojs":
+          playerUrl = baseUrl + "player3";
+          break;
+        default:
+          return null;
+      }
+
+      return `${playerUrl}/?url=${encodeURIComponent(hlsLink)}`;
+    }
+
+    function isValidHlsLink(link) {
+      // Basic validation, customize as needed
+      return link.trim() !== "";
+    }
+  </script>
+</body>
+</html>
