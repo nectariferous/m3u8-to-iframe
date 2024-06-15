@@ -154,7 +154,30 @@
     }
   </script>
   
-  
+   <script>
+        // Get the container element
+        var container = document.getElementById('container');
+
+        // Get the data-simple-tags attribute value
+        var tagsString = container.getAttribute('data-simple-tags');
+
+        // Split the string into an array of tags
+        var tagsArray = tagsString.split(',').map(tag => tag.trim());
+
+        // Get the div for tags
+        var tagContainer = container;
+
+        // Loop through the tags array and create div elements for each tag
+        tagsArray.forEach(tag => {
+            // Create div element for tag
+            var tagDiv = document.createElement('div');
+            tagDiv.classList.add('tag');
+            tagDiv.textContent = tag;
+
+            // Append tag div to tag container
+            tagContainer.appendChild(tagDiv);
+        });
+    </script>
   <!-- Text Section -->
   <div class="texthere">
     <!-- Content for the text section goes here -->
