@@ -4,72 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>m3u8 to iframe Converter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-    header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
-    }
-    main {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .logo {
-      display: block;
-      margin: 20px auto;
-      max-width: 200px;
-    }
-    .converter-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .embed-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    #copyEmbedBtn {
-      margin-left: 10px;
-      padding: 5px 10px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .player-features {
-      text-align: center;
-      margin: 20px auto;
-      max-width: 300px;
-    }
-    footer {
-      text-align: center;
-      background-color: #333;
-      color: #fff;
-      padding: 10px 0;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"> <!-- Linking the external CSS file -->
 </head>
 <body>
   <header>
     <h1>m3u8 to iframe Converter</h1>
+         <h4>Free Online HLS M3U8 Livestream Player</h4>
   </header>
   
   <main>
@@ -107,76 +47,3 @@
   <footer>
     <p>&copy; 2024 m3u8 to iframe Converter. All rights reserved.</p>
   </footer>
-
-  <script>
-    function generatePreview() {
-      var hlsLink = document.getElementById('hlsLink').value.trim();
-      var player = document.getElementById('playerSelect').value;
-      var previewContainer = document.getElementById('previewContainer');
-      var copyEmbedBtn = document.getElementById('copyEmbedBtn');
-      var iframeUrl = convertToIframe(hlsLink, player);
-
-      // Clear previous preview
-      previewContainer.innerHTML = '';
-
-      if (iframeUrl) {
-        var iframe = document.createElement('iframe');
-        iframe.setAttribute('src', iframeUrl);
-        iframe.setAttribute('width', '100%');
-        iframe.setAttribute('height', '480px');
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allowfullscreen', '');
-
-        previewContainer.appendChild(iframe);
-        copyEmbedBtn.style.display = 'inline-block';
-        document.getElementById('embedLink').value = iframeUrl;
-      } else {
-        previewContainer.innerHTML = "<p>Add video URL to start playing</p>";
-        copyEmbedBtn.style.display = 'none';
-      }
-    }
-
-    function copyEmbedLink() {
-      var embedLinkInput = document.getElementById('embedLink');
-      embedLinkInput.style.display = 'inline';
-      embedLinkInput.select();
-      document.execCommand('copy');
-      alert('Embed link copied to clipboard!');
-    }
-
-    function loadSimpleHLS() {
-      document.getElementById('hlsLink').value = "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8";
-    }
-
-    function convertToIframe(hlsLink, player) {
-      if (!isValidHlsLink(hlsLink)) {
-        return null;
-      }
-
-      var baseUrl = "https://yourbaseurl.com/"; // Replace with your actual base URL
-      var playerUrl;
-
-      switch (player) {
-        case "cleper":
-          playerUrl = baseUrl + "player1";
-          break;
-        case "jw":
-          playerUrl = baseUrl + "player2";
-          break;
-        case "videojs":
-          playerUrl = baseUrl + "player3";
-          break;
-        default:
-          return null;
-      }
-
-      return `${playerUrl}/?url=${encodeURIComponent(hlsLink)}`;
-    }
-
-    function isValidHlsLink(link) {
-      // Basic validation, customize as needed
-      return link.trim() !== "";
-    }
-  </script>
-</body>
-</html>
