@@ -13,16 +13,16 @@ function generatePreview() {
   let embedUrl = '';
   switch (selectedPlayer) {
     case 'cleper':
-      embedUrl = `https://anym3u8player.com/tv/p.php?url=${encodeURIComponent(hlsLinkInput.value)}`;
+      embedUrl = `https://noobromon.github.io/m3u8-to-iframe/live/player5.html?url=${encodeURIComponent(hlsLinkInput.value)}`;
       break;
     case 'jw':
-      embedUrl = `https://jwplayer.com/iframe-embed/?playlist=${encodeURIComponent(hlsLinkInput.value)}`;
+      embedUrl = `https://noobromon.github.io/m3u8-to-iframe/live/player5.html?url=${encodeURIComponent(hlsLinkInput.value)}`;
       break;
     case 'videojs':
-      embedUrl = `https://videojs.com/embed/iframe.html?src=${encodeURIComponent(hlsLinkInput.value)}`;
+      embedUrl = `https://noobromon.github.io/m3u8-to-iframe/live/player5.html?url=${encodeURIComponent(hlsLinkInput.value)}`;
       break;
     case 'plyrPlayer':
-      embedUrl = `https://plyr.io/embed/player.html?video=${encodeURIComponent(hlsLinkInput.value)}`;
+      embedUrl = `https://noobromon.github.io/m3u8-to-iframe/live/player5.html?url=${encodeURIComponent(hlsLinkInput.value)}`;
       break;
     default:
       break;
@@ -34,7 +34,7 @@ function generatePreview() {
   copyEmbedBtn.style.display = 'inline-block';
 
   // Update the preview container with the generated iframe
-  previewContainer.innerHTML = `<iframe src="${embedUrl}" width="100%" height="400px" frameborder="0" allowfullscreen></iframe>`;
+  previewContainer.innerHTML = `<iframe src="${embedUrl}" width="100%" height="460px" frameborder="0" allowfullscreen></iframe>`;
 }
 
 // Function to copy embed link to clipboard
