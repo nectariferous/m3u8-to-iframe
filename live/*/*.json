@@ -1,3 +1,53 @@
 {
-    "videoUrl": "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8"
+  "streams": [
+    {
+      "name": "Stream 1",
+      "url": "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8"
+    },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      },
+    {
+      "name": "Stream 2",
+      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+    },
+      
+    {
+      "name": "Stream 3",
+      "url": "https://test-streams.mux.dev/dai-discontinuity-deltatre/manifest.m3u8"
+    }
+    // Add more streams as needed
+  ]
 }
