@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player with Parameterized HLS URL</title>
+    <title>Player5</title>
     <!-- Include Plyr CSS -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
     <!-- Plyr and HLS.js scripts -->
@@ -17,11 +17,18 @@
             overflow: hidden;
         }
         .container {
-            margin: 100px auto;
-            width: 70%;
-        }
-        video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #player {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -67,7 +74,7 @@
             }
 
             const source = videoUrl;
-            const video = document.querySelector('video');
+            const video = document.querySelector('#player'); // Select by ID now
             const defaultOptions = {};
 
             if (!Hls.isSupported()) {
