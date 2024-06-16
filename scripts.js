@@ -67,3 +67,13 @@ function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
   hlsLinkInput.value = 'https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8'; // Replace with your sample HLS link
 }
+function copyCode() {
+        const codeSnippet = document.querySelector('.code-snippet');
+        const codeText = codeSnippet.querySelector('code').innerText;
+
+        navigator.clipboard.writeText(codeText).then(function() {
+            alert('Code snippet copied to clipboard!');
+        }, function() {
+            alert('Failed to copy code snippet.');
+        });
+    }
