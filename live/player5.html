@@ -3,12 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plyr Video Player</title>
+    <title>Player with Parameterized HLS URL</title>
     <!-- Include Plyr CSS -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
-    <!-- Include Plyr JS -->
+    <!-- Plyr and HLS.js scripts -->
     <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
-    <!-- Custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .container {
+            margin: 100px auto;
+            width: 70%;
+        }
+        video {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <video id="player" controls crossorigin playsinline poster="https://bitdash-a.akamaihd.net/content/sintel/poster.png">
+            <!-- Fallback content for browsers that do not support the <video> element -->
+            <p>Your browser does not support HTML5 video.</p>
+        </video>
+    </div>
+
     <script>
         // Function to extract URL parameter
         function getQueryParam(name) {
@@ -31,7 +55,7 @@
             }, 10000); // Redirect after 10 seconds
         }
 
-        // Wait for the document to be fully loaded before initializing Plyr
+        // Wait for the document to be fully loaded before initializing Player.js
         document.addEventListener('DOMContentLoaded', function () {
             // Get video URL from query parameter
             var videoUrl = getQueryParam('url');
@@ -42,47 +66,70 @@
                 return;
             }
 
-            // Initialize Plyr
-            const player = new Plyr('#player', {
-                controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
-                autoplay: true, // Adjust autoplay as needed
-                // Add other options as per Plyr documentation
-            });
+            const source = videoUrl;
+            const video = document.querySelector('video');
+            const defaultOptions = {};
 
-            // Set the source for Plyr (HLS URL)
-            player.source = {
-                type: 'video',
-                sources: [
-                    {
-                        src: videoUrl,
-                        type: 'application/x-mpegURL', // HLS MIME type
-                    },
-                ],
-            };
+            if (!Hls.isSupported()) {
+                video.src = source;
+                var player = new Plyr(video, defaultOptions);
+            } else {
+                const hls = new Hls();
+                hls.loadSource(source);
 
-            // Expose player for external use
-            window.player = player;
+                hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+                    // Transform available levels into an array of integers (height values).
+                    const availableQualities = hls.levels.map((l) => l.height);
+                    availableQualities.unshift(0); // prepend 0 to quality array (for AUTO)
+
+                    // Add quality options to Plyr player
+                    defaultOptions.quality = {
+                        default: 0, // Default quality (AUTO)
+                        options: availableQualities,
+                        forced: true,
+                        onChange: (newQuality) => updateQuality(newQuality),
+                    };
+
+                    // Add label for AUTO quality
+                    defaultOptions.i18n = {
+                        qualityLabel: {
+                            0: 'Auto',
+                        },
+                    };
+
+                    // Update quality label on quality change
+                    hls.on(Hls.Events.LEVEL_SWITCHED, function (event, data) {
+                        var span = document.querySelector(".plyr__menu__container [data-plyr='quality'][value='0'] span");
+                        if (hls.autoLevelEnabled) {
+                            span.innerHTML = `AUTO (${hls.levels[data.level].height}p)`;
+                        } else {
+                            span.innerHTML = `AUTO`;
+                        }
+                    });
+
+                    // Initialize Plyr player with quality options
+                    var player = new Plyr(video, defaultOptions);
+                });
+
+                hls.attachMedia(video);
+                window.hls = hls;
+            }
+
+            // Function to update quality based on user selection
+            function updateQuality(newQuality) {
+                if (newQuality === 0) {
+                    // Enable AUTO quality
+                    window.hls.currentLevel = -1;
+                } else {
+                    // Set specific quality level
+                    window.hls.levels.forEach((level, levelIndex) => {
+                        if (level.height === newQuality) {
+                            window.hls.currentLevel = levelIndex;
+                        }
+                    });
+                }
+            }
         });
     </script>
-    <!-- End custom JavaScript -->
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Ensures no scrollbars */
-        }
-
-        #player {
-            width: 100%;
-            height: 100vh;
-        }
-    </style>
-</head>
-<body>
-    <video id="player" controls crossorigin playsinline>
-        <!-- Fallback content for browsers that do not support the <video> element -->
-        <p>Your browser does not support HTML5 video.</p>
-    </video>
 </body>
 </html>
