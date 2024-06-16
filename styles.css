@@ -1,250 +1,35 @@
-/* Global Styles */
+/* Reset and Global Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  line-height: 1.6;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-header h1 {
-    margin: 0;
-}
-
-main {
-    padding: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
-
-footer p {
-    margin: 0;
-}
-
-/* Converter Styles */
-.converter-container {
-    margin-bottom: 20px;
-}
-
-.converter-container label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.converter-container input[type="text"],
-.converter-container select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.converter-container button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#previewContainer {
-    margin-top: 20px;
-}
-
-/* Player Video Styles */
-.payervideo {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.payervideo h1 {
-    margin-top: 0;
-}
-
-.payervideo .button {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.form-container {
-    margin-top: 20px;
-}
-
-.form-container input[type="text"],
-.form-container button {
-    padding: 10px;
-    margin: 5px;
-}
-
-.form-container button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-}
-
-.texthere {
-    margin-top: 40px;
-}
-
-.texthere h2 {
-    margin-top: 0;
-}
-
-.texthere ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.texthere ul li {
-    margin-bottom: 10px;
-}
-
-.texthere form label {
-    display: block;
-    margin-bottom: 10px;
-}
- .divtagbody{
-            margin: 0;
-            font-family: Roboto, sans-serif;
-            background: #ffffff;
-            color: #333333;
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        .intro {
-            background: rgb(255, 255, 255);
-            color: #333333;
-            font-family: Roboto, sans-serif;
-            font-size: 15px;
-            line-height: 1.5;
-            margin: 0px 0px 15px;
-            padding: 60px 30px;
-            text-align: center;
-        }
-
-        .intro h1 {
-            font-size: 18pt;
-            margin: 0px;
-            padding: 0px 0px 15px;
-        }
-
-        main {
-            background: rgb(255, 255, 255);
-            font-family: Roboto, sans-serif;
-            font-size: 15px;
-            margin: 0px auto;
-            max-width: 720px;
-            padding: 24px;
-        }
-
-        article {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        article p {
-            color: #333333;
-            line-height: 1.5;
-            margin: 0px;
-            padding: 14px;
-        }
-
-        
-
-        .credit {
-            background: rgb(255, 255, 255);
-            color: #333333;
-            font-family: Roboto, sans-serif;
-            font-size: 9pt;
-            margin: 40px 0px 0px;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .credit a {
-            color: #333333;
-            margin: 0px;
-            padding: 0px;
-            text-decoration-line: none;
-        }
-.simple-tags {
-    border-radius: 5px;
-    border: 1px solid rgb(30, 135, 240);
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 14px;
-    margin: 1em auto; /* Center the container horizontally */
-    padding: 0.5em;
-    max-width: 100%; /* Ensure the container doesn't exceed the width of its parent */
-}
-
-.simple-tags .tag {
-    background-color: #1e87f0;
-    border-radius: 5px;
-    color: white;
-    font-size: 15px;
-    line-height: 1.5;
-    margin: 0.5em 0.2em;
-    padding: 0.5em;
-}
-.imgloading {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 80%; /* Adjust maximum width */
-        max-height: 100%; /* Adjust maximum height */
-    }
 header {
   background-color: #333;
   color: #fff;
+  padding: 20px 0;
   text-align: center;
-  padding: 10px 0;
+}
+
+header h1, header h4 {
+  margin: 0;
 }
 
 main {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 20px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 20px 0;
 }
 
 .logo {
@@ -258,6 +43,36 @@ main {
   margin-bottom: 20px;
 }
 
+.converter-container label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.converter-container input[type="text"],
+.converter-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.converter-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.preview-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
 .embed-container {
   display: flex;
   align-items: center;
@@ -266,19 +81,30 @@ main {
 }
 
 #copyEmbedBtn {
-  margin-left: 10px;
   padding: 5px 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
 }
 
-.player-features {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 300px;
+.texthere {
+  margin-top: 40px;
+}
+
+.texthere h2 {
+  margin-top: 0;
+}
+
+.texthere ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.texthere ul li {
+  margin-bottom: 10px;
 }
 
 footer {
@@ -289,4 +115,16 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .converter-container button {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
