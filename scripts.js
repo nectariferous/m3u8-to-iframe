@@ -37,7 +37,7 @@ function generatePreview() {
   copyEmbedBtn.style.display = 'inline-block';
 
   // Update the preview container with the generated iframe
-  previewContainer.innerHTML = `<iframe src="${embedUrl}" width="70%" height="460px" frameborder="0" allowfullscreen></iframe>`;
+  previewContainer.innerHTML = `<iframe src="${embedUrl}" width="460px" height="560px" frameborder="0" allowfullscreen></iframe>`;
 }
 
 // Function to copy embed link to clipboard
