@@ -37,7 +37,7 @@ function generatePreview() {
   copyEmbedBtn.style.display = 'inline-block';
 
   // Update the preview container with the generated iframe
-  previewContainer.innerHTML = `<iframe src="${embedUrl}" width="460px" height="560px" frameborder="0" allowfullscreen></iframe>`;
+  previewContainer.innerHTML = `<iframe src="${embedUrl}" width="560px" height="400px" frameborder="0" allowfullscreen></iframe>`;
 }
 
 // Function to copy embed link to clipboard
@@ -67,7 +67,7 @@ async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
   
   try {
-    const response = await fetch('live/simple-url.json'); // Replace with your JSON file path
+    const response = await fetch('live/*/*.json'); // Replace with your JSON file path
     if (!response.ok) {
       throw new Error('Failed to fetch HLS URL.');
     }
