@@ -62,5 +62,5 @@ function copyEmbedLink() {
 // Function to load sample HLS link
 function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
-  hlsLinkInput.value = 'https://example.com/sample.m3u8'; // Replace with your sample HLS link
+  hlsLinkInput.value = 'https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8'; // Replace with your sample HLS link
 }
