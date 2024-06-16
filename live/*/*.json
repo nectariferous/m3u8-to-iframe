@@ -2,52 +2,47 @@
   "streams": [
     {
       "name": "Stream 1",
-      "url": "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8"
+      "url": "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
     },
     {
       "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
+      "url": "https://cdnapi.kaltura.com/p/1878761/sp/187876100/playManifest/entryId/1_2xvajead/flavorIds/1_tl01409m,1_kptb3ez8,1_re3akioy,1_wuylsxwp/format/applehttp/protocol/http/a.m3u8"
     },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      },
-    {
-      "name": "Stream 2",
-      "url": "https://cdn.theoplayer.com/video/big_buck_bunny/big_buck_bunny.m3u8"
-    },
-      
     {
       "name": "Stream 3",
-      "url": "https://test-streams.mux.dev/dai-discontinuity-deltatre/manifest.m3u8"
+      "url": "https://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8"
+    },
+    {
+      "name": "Stream 4",
+      "url": "http://content.uplynk.com/channel/e4d136bb61b1453a8817dc39c6e90201.m3u8"
+    },
+    {
+      "name": "Stream 5",
+      "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/m3u8s/105560.m3u8"
+    },
+    {
+      "name": "Stream 6",
+      "url": "https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8"
+    },
+    {
+      "name": "Stream 7",
+      "url": "http://content.uplynk.com/channel/ext/72750b711f704e4a94b5cfe6dc99f5e1/WABCLive1.m3u8"
+    },
+    {
+      "name": "Stream 8",
+      "url": "https://playertest.longtailvideo.com/adaptive/captions/playlist.m3u8"
+    },
+    {
+      "name": "Stream 9",
+      "url": "https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd"
+    },
+    {
+      "name": "Stream 10",
+      "url": "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8"
+    },
+    {
+      "name": "Stream 11",
+      "url": "https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8"
     }
-    // Add more streams as needed
   ]
 }
