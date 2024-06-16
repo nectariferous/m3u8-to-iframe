@@ -62,18 +62,34 @@ function copyEmbedLink() {
   }, 1500);
 }
 
-// Function to load sample HLS link
-function loadSimpleHLS() {
+// Function to load sample HLS link from JSON file
+async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
-  hlsLinkInput.value = 'https://nmxlive.akamaized.net/hls/live/529965/Live_1/index.m3u8'; // Replace with your sample HLS link
-}
-function copyCode() {
-        const codeSnippet = document.querySelector('.code-snippet');
-        const codeText = codeSnippet.querySelector('code').innerText;
-
-        navigator.clipboard.writeText(codeText).then(function() {
-            alert('Code snippet copied to clipboard!');
-        }, function() {
-            alert('Failed to copy code snippet.');
-        });
+  
+  try {
+    const response = await fetch('live/simple-url.json'); // Replace with your JSON file path
+    if (!response.ok) {
+      throw new Error('Failed to fetch HLS URL.');
     }
+    const data = await response.json();
+    const hlsUrl = data.url; // Assuming your JSON structure has a key 'url' containing the HLS link
+    
+    hlsLinkInput.value = hlsUrl;
+    generatePreview(); // Update the preview after loading the HLS URL
+  } catch (error) {
+    console.error('Error fetching HLS URL:', error);
+    alert('Failed to load HLS URL. Please try again later.');
+  }
+}
+
+// Function to copy code snippet to clipboard
+function copyCode() {
+  const codeSnippet = document.querySelector('.code-snippet');
+  const codeText = codeSnippet.querySelector('code').innerText;
+
+  navigator.clipboard.writeText(codeText).then(function() {
+    alert('Code snippet copied to clipboard!');
+  }, function() {
+    alert('Failed to copy code snippet.');
+  });
+}
