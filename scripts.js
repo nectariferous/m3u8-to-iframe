@@ -3,13 +3,13 @@ async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
   
   try {
-    const response = await fetch('https://noobromon.github.io/m3u8-to-iframe/live/*/*.json'); // Assuming your JSON file path is 'urls.json'
+    const response = await fetch('https://noobromon.github.io/m3u8-to-iframe/live/*/*.json'); // Corrected JSON file path
     if (!response.ok) {
       throw new Error('Failed to fetch HLS URLs.');
     }
     const data = await response.json();
 
-    // Choose a random index between 0 and 11 (for 12 URLs)
+    // Choose a random index between 0 and data length
     const randomIndex = Math.floor(Math.random() * data.length);
     const randomUrl = data[randomIndex].url;
 
