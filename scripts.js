@@ -72,7 +72,7 @@ async function loadSimpleHLS() {
       throw new Error('Failed to fetch HLS URL.');
     }
     const data = await response.json();
-    const hlsUrl = data.url; // Assuming your JSON structure has a key 'url' containing the HLS link
+    const hlsUrl = data[0].url; // Assuming your JSON structure has an array with URLs
     
     hlsLinkInput.value = hlsUrl;
     generatePreview(); // Update the preview after loading the HLS URL
@@ -93,3 +93,13 @@ function copyCode() {
     alert('Failed to copy code snippet.');
   });
 }
+
+// Event listeners setup
+document.getElementById('loadHLSButton').addEventListener('click', loadSimpleHLS);
+document.getElementById('copyEmbedBtn').addEventListener('click', copyEmbedLink);
+document.getElementById('playerSelect').addEventListener('change', generatePreview);
+
+// Initial load when the page is ready
+document.addEventListener('DOMContentLoaded', function() {
+  loadSimpleHLS(); // Load a random HLS URL when the page is loaded
+});
