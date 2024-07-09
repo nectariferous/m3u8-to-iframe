@@ -1,3 +1,30 @@
+// Function to load sample HLS link from JSON file
+async function loadSimpleHLS() {
+  const hlsLinkInput = document.getElementById('hlsLink');
+  
+  try {
+    const response = await fetch('urls.json'); // Assuming your JSON file path is 'urls.json'
+    if (!response.ok) {
+      throw new Error('Failed to fetch HLS URLs.');
+    }
+    const data = await response.json();
+
+    // Choose a random index between 0 and 11 (for 12 URLs)
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const randomUrl = data[randomIndex].url;
+
+    if (!randomUrl) {
+      throw new Error('No HLS URL found in JSON.');
+    }
+
+    hlsLinkInput.value = randomUrl;
+    generatePreview(); // Update the preview after loading the HLS URL
+  } catch (error) {
+    console.error('Error fetching HLS URLs:', error);
+    alert('Failed to load HLS URLs. Please try again later.');
+  }
+}
+
 // Function to generate preview based on selected player
 function generatePreview() {
   const hlsLinkInput = document.getElementById('hlsLink');
@@ -60,38 +87,6 @@ function copyEmbedLink() {
   setTimeout(() => {
     copyEmbedBtn.textContent = 'Copy Embed Link';
   }, 1500);
-}
-
-// Function to load sample HLS link from JSON file
-async function loadSimpleHLS() {
-  const hlsLinkInput = document.getElementById('hlsLink');
-  
-  try {
-    const response = await fetch('https://noobromon.github.io/m3u8-to-iframe/live/*/*.json'); // Replace with your JSON file path
-    if (!response.ok) {
-      throw new Error('Failed to fetch HLS URL.');
-    }
-    const data = await response.json();
-    const hlsUrl = data[0].url; // Assuming your JSON structure has an array with URLs
-    
-    hlsLinkInput.value = hlsUrl;
-    generatePreview(); // Update the preview after loading the HLS URL
-  } catch (error) {
-    console.error('Error fetching HLS URL:', error);
-    alert('Failed to load HLS URL. Please try again later.');
-  }
-}
-
-// Function to copy code snippet to clipboard
-function copyCode() {
-  const codeSnippet = document.querySelector('.code-snippet');
-  const codeText = codeSnippet.querySelector('code').innerText;
-
-  navigator.clipboard.writeText(codeText).then(function() {
-    alert('Code snippet copied to clipboard!');
-  }, function() {
-    alert('Failed to copy code snippet.');
-  });
 }
 
 // Event listeners setup
