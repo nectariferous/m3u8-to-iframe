@@ -109,6 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!isURLAllowed(window.location.href)) {
         // Redirect to the main domain after 10 seconds
         setTimeout(function() {
-            window.location.href = 'https://noobromon.github.io/';
+            window.location.href = 'http://rriptv.xyz/rriptvplaylist.php';
         }, 10); // 10 seconds delay
     }
