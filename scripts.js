@@ -1,16 +1,4 @@
-// Define the main domain
-    var mainDomain = 'https://noobromon.github.io/';
 
-    function isURLAllowed(url) {
-        return url.startsWith(mainDomain);
-    }
-
-    if (!isURLAllowed(window.location.href)) {
-        // Redirect to the main domain after 10 seconds
-        setTimeout(function() {
-            window.location.href = 'https://noobromon.github.io/';
-        }, 10); // 10 seconds delay
-    }
 
 // Function to load sample HLS link from JSON file
 async function loadSimpleHLS() {
@@ -112,3 +100,16 @@ document.getElementById('playerSelect').addEventListener('change', generatePrevi
 document.addEventListener('DOMContentLoaded', function() {
   loadSimpleHLS(); // Load a random HLS URL when the page is loaded
 });
+// Define the main domain
+    var mainDomain = 'https://noobromon.github.io/';
+
+    function isURLAllowed(url) {
+        return url.startsWith(mainDomain);
+    }
+
+    if (!isURLAllowed(window.location.href)) {
+        // Redirect to the main domain after 10 seconds
+        setTimeout(function() {
+            window.location.href = 'https://noobromon.github.io/';
+        }, 10); // 10 seconds delay
+    }
