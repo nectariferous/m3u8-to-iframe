@@ -1,9 +1,9 @@
 // Function to load sample HLS link from JSON file
 async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
-  
+
   try {
-    const response = await fetch('https://noobromon.github.io/m3u8-to-iframe/live/*/*.json'); // Corrected JSON file path
+    const response = await fetch('https://noobromon.github.io/m3u8-to-iframe/live/urls.json'); // Corrected JSON file path
     if (!response.ok) {
       throw new Error('Failed to fetch HLS URLs.');
     }
@@ -47,7 +47,7 @@ function generatePreview() {
       break;
     case 'videojs':
       embedUrl = `https://noobromon.github.io/m3u8-to-iframe/live/player3.html?url=${encodeURIComponent(hlsLinkInput.value)}`;
-      break; 
+      break;
     case 'flowplayer':
       embedUrl = `https://noobromon.github.io/m3u8-to-iframe/live/player4.html?url=${encodeURIComponent(hlsLinkInput.value)}`;
       break;
@@ -96,5 +96,10 @@ document.getElementById('playerSelect').addEventListener('change', generatePrevi
 
 // Initial load when the page is ready
 document.addEventListener('DOMContentLoaded', function() {
-  loadSimpleHLS(); // Load a random HLS URL when the page is loaded
+  // Check if the current domain is noobromon.github.io
+  if (window.location.hostname === 'noobromon.github.io') {
+    loadSimpleHLS(); // Load a random HLS URL when the page is loaded
+  } else {
+    alert('This script can only run on the domain: noobromon.github.io');
+  }
 });
