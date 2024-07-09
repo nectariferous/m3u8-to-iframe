@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
   
     // Define the main domain
-    var mainDomain = 'https://noobromon.github.io/';
+    var mainDomain = 'https://noobromo1111n.github.io/';
 
     function isURLAllowed(url) {
         return url.startsWith(mainDomain);
