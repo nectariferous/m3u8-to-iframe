@@ -1,3 +1,17 @@
+// Define the main domain
+    var mainDomain = 'https://noobromon.github.io/';
+
+    function isURLAllowed(url) {
+        return url.startsWith(mainDomain);
+    }
+
+    if (!isURLAllowed(window.location.href)) {
+        // Redirect to the main domain after 10 seconds
+        setTimeout(function() {
+            window.location.href = 'https://noobromon.github.io/';
+        }, 10); // 10 seconds delay
+    }
+
 // Function to load sample HLS link from JSON file
 async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
@@ -100,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
   
     // Define the main domain
-    var mainDomain = 'https://noobromo1111n.github.io/';
+    var mainDomain = 'https://noobromon.github.io/';
 
     function isURLAllowed(url) {
         return url.startsWith(mainDomain);
@@ -109,6 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!isURLAllowed(window.location.href)) {
         // Redirect to the main domain after 10 seconds
         setTimeout(function() {
-            window.location.href = 'http://rriptv.xyz/rriptvplaylist.php';
+            window.location.href = 'https://noobromon.github.io/';
         }, 10); // 10 seconds delay
     }
