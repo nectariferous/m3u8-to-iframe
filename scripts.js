@@ -67,7 +67,7 @@ async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
   
   try {
-    const response = await fetch('live/*/*.json'); // Replace with your JSON file path
+    const response = await fetch('/live/*/*.json'); // Replace with your JSON file path
     if (!response.ok) {
       throw new Error('Failed to fetch HLS URL.');
     }
