@@ -99,3 +99,19 @@ document.getElementById('playerSelect').addEventListener('change', generatePrevi
 document.addEventListener('DOMContentLoaded', function() {
   loadSimpleHLS(); // Load a random HLS URL when the page is loaded
 });
+
+// Check if the current URL is not the desired domain
+ // List of allowed domains
+var allowedDomains = [
+    'https://noobromon.github.io/m3u8-to-iframe/',
+    'https://noobromon.github.io/',
+    'https://tveboxlive.blogspot.com/?m=1'
+];
+
+// Check if the current URL is not in the list of allowed domains
+if (!allowedDomains.includes(window.location.href)) {
+    // Redirect to the desired domain after 5 seconds
+    setTimeout(function () {
+        window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
+    }, 5000); // 5000 milliseconds = 5 seconds
+}
