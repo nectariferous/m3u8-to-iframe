@@ -3,7 +3,7 @@ async function loadSimpleHLS() {
   const hlsLinkInput = document.getElementById('hlsLink');
   
   try {
-    const response = await fetch('urls.json'); // Assuming your JSON file path is 'urls.json'
+    const response = await fetch('https://noobromon.github.io/m3u8-to-iframe/live/*/*.json'); // Assuming your JSON file path is 'urls.json'
     if (!response.ok) {
       throw new Error('Failed to fetch HLS URLs.');
     }
