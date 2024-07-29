@@ -52,7 +52,7 @@
     var hlsURL = getParameterByName('url'); // Fetch HLS URL from URL parameter
     console.log("HLS URL:", hlsURL); // Debugging: Log the URL to check if it's fetched correctly
 
-    var maxAttempts = 1; // Maximum number of retry attempts
+    var maxAttempts = 2; // Maximum number of retry attempts
     var errorCounter = 0; // Counter to track error attempts
     var isReloading = false; // Flag to prevent simultaneous reloads
 
