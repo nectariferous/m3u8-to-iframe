@@ -14,39 +14,11 @@
         height: 100vh;
         position: relative;
     }
-    #UnMutePlayer {
-        position: absolute;
-        left: 12px;
-        top: 7px;
-        width: 250px;
-        height: 45px;
-        visibility: visible;
-        opacity: .8;
-    }
-    .unmute {
-        background: transparent;
-        z-index: 2;
-        color: #fff;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 200px;
-        border: 2px solid #fff;
-        padding: 4px 0;
-        border-radius: 2px;
-        cursor: pointer;
-        opacity: .8;
-        font-size: 14px;
-    }
-    .unmute:hover {
-        opacity: .9;
-    }
 </style>
 <link rel="stylesheet" type="text/css" href="https://plus880.netlify.app/clap.css">
 </head>
 <body>
 <div id="player"></div>
-
 
 <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
@@ -70,55 +42,50 @@
         var errorCounter = 0; // Counter to track error attempts
         var isReloading = false; // Flag to prevent simultaneous reloads
 
-        function initializePlayer() {
-            var player = new Clappr.Player({
-                source: hlsURL,
-                plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
-                width: '100%',
-                height: '100vh',
-                autoPlay: true,
-                mimeType: "application/x-mpegURL",
-                mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
-                parentId: "#player",
-                hlsRecoverAttempts: 1,
-                hlsPlayback: {
-                    preload: true,
-                    customListeners: [],
+        var player = new Clappr.Player({
+            source: hlsURL,
+            plugins: [Clappr.HlsjsPlayback, Clappr.LevelSelector, Clappr.AudioTrackSelector],
+            width: '100%',
+            height: '100vh',
+            autoPlay: true,
+            mimeType: "application/x-mpegURL",
+            mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
+            parentId: "#player",
+            hlsRecoverAttempts: 1,
+            hlsPlayback: {
+                preload: true,
+                customListeners: [],
+            },
+            playback: {
+                extrapolatedWindowNumSegments: 2,
+                triggerFatalErrorOnResourceDenied: false,
+                hlsjsConfig: {
+                    // hls.js specific options
                 },
-                playback: {
-                    extrapolatedWindowNumSegments: 2,
-                    triggerFatalErrorOnResourceDenied: false,
-                    hlsjsConfig: {
-                        // hls.js specific options
-                    },
-                },
-                events: {
-                    onError: function(e) {
-                        if (errorCounter < maxAttempts) {
-                            errorCounter++;
-                            if (!isReloading) {
-                                isReloading = true;
-                                player.stop();
-                                setTimeout(function() {
-                                    player.load(hlsURL);
-                                    isReloading = false;
-                                }, 1000); // Adding a short delay before retrying
-                            }
-                        } else {
-                            console.error("Maximum retry attempts reached.");
+            },
+            events: {
+                onError: function(e) {
+                    if (errorCounter < maxAttempts) {
+                        errorCounter++;
+                        if (!isReloading) {
+                            isReloading = true;
+                            player.stop();
+                            setTimeout(function() {
+                                player.load(hlsURL);
+                                isReloading = false;
+                            }, 1000); // Adding a short delay before retrying
                         }
-                    },
-                    onPlay: function() {
-                        errorCounter = 0;
-                        isReloading = false;
+                    } else {
+                        console.error("Maximum retry attempts reached.");
                     }
+                },
+                onPlay: function() {
+                    errorCounter = 0;
+                    isReloading = false;
                 }
-            });
-        }
-
-        window.onload = function() {
-            initializePlayer();
-        };
+            }
+        });
+        
     } else {
         console.error("No video URL provided.");
     }
@@ -144,15 +111,6 @@
         document.body.appendChild(script);
     })();
 
-    // Unmute button functionality
-    document.getElementById('UnMutePlayer').addEventListener('click', function() {
-        var player = Clappr.Player.getInstance();
-        if (player) {
-            var isMuted = player.getPlayback().isMuted();
-            player.getPlayback().setMuted(!isMuted);
-            this.textContent = isMuted ? 'Unmute' : 'Mute';
-        }
-    });
 </script>
 </body>
 </html>
