@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced-Player1</title>
+<title>Player</title>
 <style>
     body {
         margin: 0;
@@ -25,6 +25,20 @@
 <script src="//cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js"></script>
 
 <script>
+    // Define the main domain
+    var mainDomain = 'https://noobromon.github.io/';
+
+    function isURLAllowed(url) {
+        return url.startsWith(mainDomain);
+    }
+
+    if (!isURLAllowed(window.location.href)) {
+        // Redirect to the main domain after 10 seconds
+        setTimeout(function () {
+            window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
+        }, 10000); // 10 seconds delay (adjusted from 10 ms)
+    }
+
     // Function to get URL parameter by name
     function getParameterByName(name) {
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -38,7 +52,7 @@
     var hlsURL = getParameterByName('url'); // Fetch HLS URL from URL parameter
     console.log("HLS URL:", hlsURL); // Debugging: Log the URL to check if it's fetched correctly
 
-    var maxAttempts = 2; // Maximum number of retry attempts
+    var maxAttempts = 1; // Maximum number of retry attempts
     var errorCounter = 0; // Counter to track error attempts
     var isReloading = false; // Flag to prevent simultaneous reloads
 
@@ -96,6 +110,15 @@
 
     // Call reloadStream function after the document has loaded
     window.onload = reloadStream;
+
+    // Disable certain browser features
+    (function () {
+        var script = document.createElement('script');
+        script.setAttribute('disable-devtool-auto', 'true');
+        script.setAttribute('src', 'https://cdn.jsdelivr.net/npm/disable-devtool');
+        script.setAttribute('clear-log', 'true');
+        document.body.appendChild(script);
+    })();
 </script>
 </body>
 </html>
