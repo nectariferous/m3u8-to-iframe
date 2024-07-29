@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Player</title>
+<title>ss Player</title>
 <style>
     body {
         margin: 0;
@@ -36,6 +36,7 @@
     }
 
     var hlsURL = getParameterByName('url'); // Fetch HLS URL from URL parameter
+    console.log("HLS URL:", hlsURL); // Debugging: Log the URL to check if it's fetched correctly
 
     var maxAttempts = 1; // Maximum number of retry attempts
     var errorCounter = 0; // Counter to track error attempts
@@ -74,6 +75,7 @@
                     },
                     events: {
                         onError: function(e) {
+                            console.error("Player Error:", e); // Debugging: Log errors
                             if (errorCounter < maxAttempts) {
                                 errorCounter++;
                                 isReloading = false; // Reset reloading flag
