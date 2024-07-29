@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Player 1</title>
+<title>Advanced Player1</title>
 <style>
     body {
         margin: 0;
@@ -12,7 +12,6 @@
     #player {
         width: 100%;
         height: 100vh;
-        position: relative;
     }
 </style>
 <link rel="stylesheet" type="text/css" href="https://plus880.netlify.app/clap.css">
@@ -26,6 +25,7 @@
 <script src="//cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js"></script>
 
 <script>
+    // Function to get query parameter by name
     function getParameterByName(name) {
         name = name.replace(/[\[\]]/g, "\\$&");
         var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -37,11 +37,25 @@
 
     var hlsURL = getParameterByName('url'); // Fetch HLS URL from URL parameter
 
-    if (hlsURL) {
-        var maxAttempts = 3; // Maximum number of retry attempts
-        var errorCounter = 0; // Counter to track error attempts
-        var isReloading = false; // Flag to prevent simultaneous reloads
+    // Variables for error handling and retry logic
+    var maxAttempts = 3; // Maximum number of retry attempts
+    var errorCounter = 0; // Counter to track error attempts
+    var isReloading = false; // Flag to prevent simultaneous reloads
 
+    // Function to reload the stream
+    function reloadStream() {
+        if (!isReloading) {
+            isReloading = true;
+            player.stop();
+            setTimeout(function() {
+                player.load(hlsURL);
+                isReloading = false;
+            }, 1000); // 1-second delay before retrying
+        }
+    }
+
+    // Initialize player if HLS URL is provided
+    if (hlsURL) {
         var player = new Clappr.Player({
             source: hlsURL,
             plugins: [Clappr.HlsjsPlayback, Clappr.LevelSelector, Clappr.AudioTrackSelector],
@@ -67,16 +81,9 @@
                 onError: function(e) {
                     if (errorCounter < maxAttempts) {
                         errorCounter++;
-                        if (!isReloading) {
-                            isReloading = true;
-                            player.stop();
-                            setTimeout(function() {
-                                player.load(hlsURL);
-                                isReloading = false;
-                            }, 1000); // Adding a short delay before retrying
-                        }
+                        reloadStream();
                     } else {
-                        console.error("Maximum retry attempts reached.");
+                        console.error("Maximum retry attempts reached. Error details:", e);
                     }
                 },
                 onPlay: function() {
@@ -85,24 +92,26 @@
                 }
             }
         });
-        
     } else {
         console.error("No video URL provided.");
     }
 
+    // Define the main domain
     var mainDomain = 'https://noobromon.github.io/';
 
+    // Function to check if URL is allowed
     function isURLAllowed(url) {
         return url.startsWith(mainDomain);
     }
 
+    // Redirect to the main domain if the URL is not allowed
     if (!isURLAllowed(window.location.href)) {
         setTimeout(function () {
             window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
         }, 10000); // 10 seconds delay
     }
 
-    // Disable certain browser features
+    // Disable certain browser features (note: this is not foolproof)
     (function () {
         var script = document.createElement('script');
         script.setAttribute('disable-devtool-auto', 'true');
@@ -110,7 +119,6 @@
         script.setAttribute('clear-log', 'true');
         document.body.appendChild(script);
     })();
-
 </script>
 </body>
 </html>
