@@ -27,28 +27,7 @@
 <body>
     <div id="player"></div>
     <script>
-        const mainDomain = 'https://noobromon.github.io/';
-        
-        function isURLAllowed(url) {
-            return url.startsWith(mainDomain);
-        }
-
-        if (!isURLAllowed(window.location.href)) {
-            setTimeout(() => {
-                window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
-            }, 10000);
-        }
-
-        function getParameterByName(name) {
-            const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
-            const results = regex.exec(window.location.href);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        const hlsURL = getParameterByName('url');
-        console.log("HLS URL:", hlsURL);
+        const hlsURL = 'https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/shemaroo-filmigaane/master.m3u8';
 
         const maxAttempts = 2;
         let errorCounter = 0;
@@ -106,7 +85,7 @@
                         }
                     });
                 } else {
-                    console.error("HLS URL not found in URL parameters.");
+                    console.error("HLS URL not found.");
                 }
             } else {
                 console.error("Stream reload aborted. Either already reloading or max attempts reached.");
