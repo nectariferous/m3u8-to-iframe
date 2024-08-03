@@ -67,7 +67,7 @@
                         source: decodeURIComponent(hlsURL),
                         plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
                         width: '100%', /* Make sure the player fills the container width */
-                        height: '100%', /* Make sure the player fills the container height */
+                        height: '100vh', /* Make sure the player fills the container height */
                         autoPlay: true,
                         mimeType: "application/x-mpegURL",
                         mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
