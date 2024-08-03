@@ -1,98 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MHDTVWORLD | Watch Your Favourite Indian TV Channels Anytime Anywhere</title>
-    <link rel="stylesheet" href="/players/clap.css">
-    <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js" defer></script>
-    <script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.2.0/dist/hlsjs-playback.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js" defer></script>
-    <script src='https://cdn.jsdelivr.net/npm/disable-devtool@latest' defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced-Player1</title>
+<style>
+    body {
+        margin: 0;
+        background: #000; /* Optional: add a background color for better contrast */
+    }
+    
+</style>
+<link rel="stylesheet" type="text/css" href="https://plus880.netlify.app/clap.css">
 </head>
 <body>
-    <div id="player" style="height: 100%; width: 100%;"></div>
-    <script>
-        // Define the main domain
-        var mainDomain = 'https://noobromon.github.io/';
+<div id="player" style="height: 100%; width: 100%;">
 
-        function isURLAllowed(url) {
-            return url.startsWith(mainDomain);
-        }
+<script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@1.2.0/dist/hlsjs-playback.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/@c3voc/clappr-audio-track-selector@0.2.4/dist/audio-track-selector.min.js"></script>
 
-        if (!isURLAllowed(window.location.href)) {
-            // Redirect to the main domain after 10 seconds
-            setTimeout(function () {
-                window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
-            }, 10000); // 10 seconds delay
-        }
+<script>
+    // Define the main domain
+    var mainDomain = 'https://noobromon.github.io/';
 
-        // Function to get URL parameter by name
-        function getParameterByName(name) {
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(window.location.href);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+    function isURLAllowed(url) {
+        return url.startsWith(mainDomain);
+    }
 
-        var hlsURL = getParameterByName('url'); // Fetch HLS URL from URL parameter
-        console.log("HLS URL:", hlsURL); // Debugging: Log the URL to check if it's fetched correctly
+    if (!isURLAllowed(window.location.href)) {
+        // Redirect to the main domain after 10 seconds
+        setTimeout(function () {
+            window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
+        }, 10000); // 10 seconds delay (adjusted from 10 ms)
+    }
 
-        var maxAttempts = 2; // Maximum number of retry attempts
-        var errorCounter = 0; // Counter to track error attempts
-        var isReloading = false; // Flag to prevent simultaneous reloads
+    // Function to get URL parameter by name
+    function getParameterByName(name) {
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(window.location.href);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
-        function reloadStream() {
-            if (!isReloading && errorCounter < maxAttempts) {
-                isReloading = true;
-                if (hlsURL) {
-                    var playerElement = document.getElementById('player');
-                    playerElement.innerHTML = ''; // Clear previous player instance
+    var hlsURL = getParameterByName('url'); // Fetch HLS URL from URL parameter
+    console.log("HLS URL:", hlsURL); // Debugging: Log the URL to check if it's fetched correctly
 
-                    var player = new Clappr.Player({
-                        source: decodeURIComponent(hlsURL),
-                        plugins: [Clappr.HlsjsPlayback, Clappr.LevelSelector, Clappr.AudioTrackSelector],
-                        autoPlay: true,
-                        width: '100%',
-                        height: '100%',
-                        mimeType: "application/x-mpegURL",
-                        mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
-                        parentId: "#player",
-                        hlsUseNextLevel: false,
-                        hlsMinimumDvrSize: 60,
-                        hlsRecoverAttempts: 16,
-                        hlsPlayback: { preload: true, customListeners: [] },
-                        playback: {
-                            extrapolatedWindowNumSegments: 2,
-                            triggerFatalErrorOnResourceDenied: false,
-                            hlsjsConfig: {} // hls.js specific options
+    var maxAttempts = 2; // Maximum number of retry attempts
+    var errorCounter = 0; // Counter to track error attempts
+    var isReloading = false; // Flag to prevent simultaneous reloads
+
+    function reloadStream() {
+        if (!isReloading && errorCounter < maxAttempts) {
+            isReloading = true;
+            if (hlsURL) {
+                var playerElement = document.getElementById('player');
+                playerElement.innerHTML = ''; // Clear previous player instance
+
+                var player = new Clappr.Player({
+                    source: decodeURIComponent(hlsURL),
+                    plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
+                    width: '100%',
+                    height: '100vh',
+                    autoPlay: true,
+                    mimeType: "application/x-mpegURL",
+                    mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
+                    parentId: "#player",
+                    hlsUseNextLevel: false,
+                    maxBufferLength: 30,
+                    hlsMinimumDvrSize: 60,
+                    hlsRecoverAttempts: 1,
+                    hlsPlayback: {
+                        preload: true,
+                        customListeners: [],
+                    },
+                    playback: {
+                        extrapolatedWindowNumSegments: 2,
+                        triggerFatalErrorOnResourceDenied: false,
+                        hlsjsConfig: {
+                            // hls.js specific options
                         },
-                        listeners: {
-                            onError: function(e) {
-                                console.error("Player Error:", e); // Debugging: Log errors
-                                if (errorCounter < maxAttempts) {
-                                    errorCounter++;
-                                    isReloading = false; // Reset reloading flag
-                                    reloadStream();
-                                }
-                            },
-                            onPlay: function() {
-                                errorCounter = 0; // Reset error counter
-                                isReloading = false;
+                    },
+                    events: {
+                        onError: function(e) {
+                            console.error("Player Error:", e); // Debugging: Log errors
+                            if (errorCounter < maxAttempts) {
+                                errorCounter++;
+                                isReloading = false; // Reset reloading flag
+                                reloadStream();
                             }
+                        },
+                        onPlay: function() {
+                            errorCounter = 0; // Reset error counter
+                            isReloading = false;
                         }
-                    });
-                } else {
-                    console.error("HLS URL not found in URL parameters.");
-                }
+                    }
+                });
+            } else {
+                console.error("HLS URL not found in URL parameters.");
             }
         }
+    }
 
-        // Call reloadStream function after the document has loaded
-        window.onload = reloadStream;
-    </script>
+    // Call reloadStream function after the document has loaded
+    window.onload = reloadStream;
+
+    // Disable certain browser features
+    (function () {
+        var script = document.createElement('script');
+        script.setAttribute('disable-devtool-auto', 'true');
+        script.setAttribute('src', 'https://cdn.jsdelivr.net/npm/disable-devtool');
+        script.setAttribute('clear-log', 'true');
+        document.body.appendChild(script);
+    })();
+</script>
 </body>
 </html>
