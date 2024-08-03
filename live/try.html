@@ -27,55 +27,89 @@
 <body>
     <div id="player"></div>
     <script>
-        var errorCounter = 0;
-        var maxAttempts = 3; // Define your maximum retry attempts
-        var isReloading = false;
+        const mainDomain = 'https://noobromon.github.io/';
+        
+        function isURLAllowed(url) {
+            return url.startsWith(mainDomain);
+        }
+
+        if (!isURLAllowed(window.location.href)) {
+            setTimeout(() => {
+                window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
+            }, 10000);
+        }
+
+        function getParameterByName(name) {
+            const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+            const results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        const hlsURL = getParameterByName('url');
+        console.log("HLS URL:", hlsURL);
+
+        const maxAttempts = 2;
+        let errorCounter = 0;
+        let isReloading = false;
 
         function reloadStream() {
-            var streamUrl = 'https://d35j504z0x2vu.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/shemaroo-filmigaane/master.m3u8';
-
-            if (streamUrl) {
-                var player = new Clappr.Player({
-                    source: streamUrl,
-                    plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
-                    width: '100%',
-                    height: '100%',
-                    autoPlay: true,
-                    mimeType: "application/x-mpegURL",
-                    mediacontrol: {
-                        seekbar: "#ff0000",
-                        buttons: "#eee"
-                    },
-                    parentId: "#player",
-                    hlsUseNextLevel: false,
-                    hlsMinimumDvrSize: 60,
-                    hlsRecoverAttempts: 16,
-                    hlsPlayback: {
-                        preload: true,
-                        customListeners: []
-                    },
-                    playback: {
-                        extrapolatedWindowNumSegments: 2,
-                        triggerFatalErrorOnResourceDenied: false,
-                        hlsjsConfig: {} // hls.js specific options
-                    },
-                    events: {
-                        onError: function(e) {
-                            console.error("Player Error:", e);
-                            if (errorCounter < maxAttempts) {
-                                errorCounter++;
-                                isReloading = false;
-                                reloadStream();
-                            }
-                        },
-                        onPlay: function() {
-                            errorCounter = 0;
-                            isReloading = false;
-                        }
+            if (!isReloading && errorCounter < maxAttempts) {
+                isReloading = true;
+                if (hlsURL) {
+                    console.log("Initializing Clappr player with URL:", hlsURL);
+                    const playerElement = document.getElementById('player');
+                    if (!playerElement) {
+                        console.error("Player element not found.");
+                        return;
                     }
-                });
+                    playerElement.innerHTML = '';
+
+                    const player = new Clappr.Player({
+                        source: hlsURL,
+                        plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
+                        width: '100%',
+                        height: '100%',
+                        autoPlay: true,
+                        mimeType: "application/x-mpegURL",
+                        mediacontrol: {
+                            seekbar: "#ff0000",
+                            buttons: "#eee"
+                        },
+                        parentId: "#player",
+                        hlsUseNextLevel: false,
+                        hlsMinimumDvrSize: 60,
+                        hlsRecoverAttempts: 16,
+                        hlsPlayback: {
+                            preload: true,
+                            customListeners: []
+                        },
+                        playback: {
+                            extrapolatedWindowNumSegments: 2,
+                            triggerFatalErrorOnResourceDenied: false,
+                            hlsjsConfig: {} // hls.js specific options
+                        },
+                        events: {
+                            onError: function(e) {
+                                console.error("Player Error:", e);
+                                if (errorCounter < maxAttempts) {
+                                    errorCounter++;
+                                    isReloading = false;
+                                    reloadStream();
+                                }
+                            },
+                            onPlay: function() {
+                                errorCounter = 0;
+                                isReloading = false;
+                            }
+                        }
+                    });
+                } else {
+                    console.error("HLS URL not found in URL parameters.");
+                }
             } else {
-                console.error("HLS URL not found in URL parameters.");
+                console.error("Stream reload aborted. Either already reloading or max attempts reached.");
             }
         }
 
