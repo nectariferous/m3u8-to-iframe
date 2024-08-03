@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Watch your favorite Indian TV channels anytime, anywhere with MHDTVWORLD.">
-    <title>MHDTVWORLD | Watch Your Favourite Indian TV Channels Anytime Anywhere</title>
+    <title>ccccccc</title>
     <link rel="stylesheet" type="text/css" href="/players/clap.css">
     <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
@@ -27,7 +27,28 @@
 <body>
     <div id="player"></div>
     <script>
-        const hlsURL = 'https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/shemaroo-filmigaane/master.m3u8';
+        const mainDomain = 'https://noobromon.github.io/';
+        
+        function isURLAllowed(url) {
+            return url.startsWith(mainDomain);
+        }
+
+        if (!isURLAllowed(window.location.href)) {
+            setTimeout(() => {
+                window.location.href = 'https://noobromon.github.io/m3u8-to-iframe/';
+            }, 10000);
+        }
+
+        function getParameterByName(name) {
+            const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+            const results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        const hlsURL = getParameterByName('url');
+        console.log("HLS URL:", hlsURL);
 
         const maxAttempts = 2;
         let errorCounter = 0;
@@ -85,7 +106,7 @@
                         }
                     });
                 } else {
-                    console.error("HLS URL not found.");
+                    console.error("HLS URL not found in URL parameters.");
                 }
             } else {
                 console.error("Stream reload aborted. Either already reloading or max attempts reached.");
