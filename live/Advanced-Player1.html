@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Watch your favorite Indian TV channels anytime, anywhere with MHDTVWORLD.">
-    <title>aaaaaaaAdvanced-Player1</title>
+    <title>Advanced-Player1</title>
     <link rel="stylesheet" type="text/css" href="/players/clap.css">
     <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
@@ -27,7 +27,6 @@
 </head>
 <body>
     <div id="player"></div>
-    <script>
     <script>
         const mainDomain = 'https://noobromon.github.io/';
         
@@ -60,31 +59,37 @@
             if (!isReloading && errorCounter < maxAttempts) {
                 isReloading = true;
                 if (hlsURL) {
+                    console.log("Initializing Clappr player with URL:", hlsURL);
                     const playerElement = document.getElementById('player');
+                    if (!playerElement) {
+                        console.error("Player element not found.");
+                        return;
+                    }
                     playerElement.innerHTML = '';
 
                     const player = new Clappr.Player({
-                        source: decodeURIComponent(hlsURL),
+                        source: hlsURL,
                         plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
-                        width: '100%', /* Make sure the player fills the container width */
-                        height: '100vh', /* Make sure the player fills the container height */
+                        width: '100%',
+                        height: '100%',
                         autoPlay: true,
                         mimeType: "application/x-mpegURL",
-                        mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
+                        mediacontrol: {
+                            seekbar: "#ff0000",
+                            buttons: "#eee"
+                        },
                         parentId: "#player",
                         hlsUseNextLevel: false,
                         hlsMinimumDvrSize: 60,
                         hlsRecoverAttempts: 16,
                         hlsPlayback: {
                             preload: true,
-                            customListeners: [],
+                            customListeners: []
                         },
                         playback: {
                             extrapolatedWindowNumSegments: 2,
                             triggerFatalErrorOnResourceDenied: false,
-                            hlsjsConfig: {
-                                // hls.js specific options can be added here
-                            },
+                            hlsjsConfig: {} // hls.js specific options
                         },
                         events: {
                             onError: function(e) {
@@ -104,6 +109,8 @@
                 } else {
                     console.error("HLS URL not found in URL parameters.");
                 }
+            } else {
+                console.error("Stream reload aborted. Either already reloading or max attempts reached.");
             }
         }
 
