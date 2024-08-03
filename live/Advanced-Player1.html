@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced-Player1</title>
+    <title>AA Advanced-Player1</title>
     <style>
         body {
             margin: 0;
             background: #000; /* Optional: add a background color for better contrast */
         }
         #player {
-            width: 100%;
-            height: 100vh; /* Ensure the player takes up the full viewport height */
+            position: absolute; /* Use absolute positioning to cover the entire viewport */
+            top: 0;
+            left: 0;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent any overflow */
         }
     </style>
     <link rel="stylesheet" href="https://plus880.netlify.app/clap.css">
 </head>
 <body>
-    <div id="player" style="height: 100%; width: 100%;"></div>
+    <div id="player"></div>
 
     <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <script src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
@@ -62,8 +66,8 @@
                     const player = new Clappr.Player({
                         source: decodeURIComponent(hlsURL),
                         plugins: [HlsjsPlayback, LevelSelector, AudioTrackSelector],
-                        width: '100%',
-                        height: '100%',
+                        width: '100%', /* Make sure the player fills the container width */
+                        height: '100%', /* Make sure the player fills the container height */
                         autoPlay: true,
                         mimeType: "application/x-mpegURL",
                         mediacontrol: { seekbar: "#ff0000", buttons: "#eee" },
